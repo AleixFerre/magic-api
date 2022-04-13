@@ -7,7 +7,8 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
-    "test": "nodemon src/test.ts"
+    "test": "nodemon src/test.ts",
+    "s": "node ."
   },
   "author": "Aleix Ferré",
   "license": "ISC",
