@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: 'https://aleixferre.github.io/newtab/',
+    origin: 'https://aleixferre.github.io',
   }),
 );
 
