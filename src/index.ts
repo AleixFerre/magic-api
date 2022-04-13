@@ -1,17 +1,35 @@
-import express from "express";
-import dotenv from "dotenv";
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import { setupRoutes } from './routes/routes';
+
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8080; // default port to listen
+const port = process.env.PORT || 3000;
 
-// define a route handler for the default home page
-app.get("/", (req, res) => {
-  res.send("Welcome to my personal API! Please be kind.");
+app.use(bodyParser.json());
+
+app.use(
+  cors({
+    origin: 'https://www.github.com',
+  }),
+);
+
+app.get('/', (req, res) => {
+  res.send('Welcome to my personal API! Please be kind.');
 });
+
+app.get('/api', (req, res) => {
+  res.send('Welcome to my personal API! Please be kind.');
+});
+
+// Adding all routes
+setupRoutes(app);
 
 // start the Express server
 app.listen(port, () => {
-  // tslint:disable-next-line:no-console
-  console.log(`server started at http://localhost:${port}`);
+  // tslint:disable-next-line: no-console
+  console.log(`Server started at http://localhost:${port}`);
 });
