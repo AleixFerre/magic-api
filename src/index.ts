@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { setupRoutes } from './routes/routes';
+import morgan from 'morgan';
 
 dotenv.config();
 
@@ -11,9 +12,13 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
+if (process.env.LOGS === 'true') {
+  app.use(morgan('dev'));
+}
+
 app.use(
   cors({
-    origin: 'https://aleixferre.github.io',
+    origin: process.env.SECURE_ORIGIN,
   }),
 );
 
