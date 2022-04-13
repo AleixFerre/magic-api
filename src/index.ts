@@ -22,14 +22,6 @@ app.use(
   }),
 );
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my personal API! Please be kind.');
-});
-
-app.get('/api', (req, res) => {
-  res.send('Welcome to my personal API! Please be kind.');
-});
-
 // Adding all routes
 setupRoutes(app);
 
