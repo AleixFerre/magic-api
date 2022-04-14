@@ -29,5 +29,7 @@ setupRoutes(app);
 app.listen(port, () => {
   // tslint:disable-next-line: no-console
   console.log(`Secure origin: ${process.env.SECURE_ORIGIN}`);
+  
+  // tslint:disable-next-line: no-console
   console.log(`Server started at http://localhost:${port}`);
 });
