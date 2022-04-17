@@ -1,14 +1,13 @@
 import { Express } from 'express-serve-static-core';
-import { homeRoute } from './home/home.route';
-import { weatherRoute } from './newtab/weather.route';
+import { homeRoute } from './api/home.router';
+import { ApiRouter } from './api/models/api-router.model';
+import { testRoute } from './api/test.router';
+import { weatherRoute } from './api/weather.router';
 
-const routes = {
-  weatherRoute,
-  homeRoute,
-};
+const routers: ApiRouter[] = [weatherRoute, homeRoute, testRoute];
 
 export const setupRoutes = (app: Express) => {
-  app.get('/', routes.homeRoute.getHome);
-  app.get('/api', routes.homeRoute.getHome);
-  app.post('/api/weather', routes.weatherRoute.getWeather);
+  routers.forEach((router) => {
+    app.use(router.ENDPOINT, router.router);
+  });
 };
