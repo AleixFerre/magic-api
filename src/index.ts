@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { setupRoutes } from './routes/routes';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -30,3 +31,13 @@ app.listen(port, () => {
   // tslint:disable-next-line: no-console
   console.log(`Server started at http://localhost:${port}`);
 });
+
+// MONGODB CONNECTION
+mongoose
+  .connect(
+    process.env.TESTING ? process.env.MONGODBSRVTest : process.env.MONGODBSRV,
+  )
+  .then(() => {
+    console.log('CONNECTAT CORRECTAMENT A LA BASE DE DADES!');
+  })
+  .catch(console.error);

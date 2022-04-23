@@ -4,7 +4,7 @@
   "jsRules": {},
   "rules": {
     "max-line-length": [true, 80],
-    "no-console": [true],
+    "no-console": [false],
     "trailing-comma": [false]
   },
   "rulesDirectory": []
