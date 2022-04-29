@@ -11,22 +11,21 @@ const flattenDBValue = (value: any) => {
   return info;
 };
 
-router.get('/stats', (req, res) => {
+router.get('/stats', (_req, res) => {
   statsModel
     .find({})
     .lean()
-    .then((stats: any) => {
+    .then((stats) => {
       res.json(flattenDBValue(stats[0]));
     });
 });
 
-router.get('/commands', (req, res) => {
+router.get('/commands', (_req, res) => {
   commandsModel
     .find({})
     .lean()
     .then((commands: any) => {
-      commands = commands.map(flattenDBValue);
-      res.json(commands);
+      res.json(commands.map(flattenDBValue));
     });
 });
 

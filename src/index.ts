@@ -34,7 +34,7 @@ app.listen(port, () => {
 
 // MONGODB CONNECTION
 mongoose
-  .connect(process.env.MONGODBSRV)
+  .connect(process.env.MONGODBSRV ?? '')
   .then(() => {
     console.log('CONNECTAT CORRECTAMENT A LA BASE DE DADES!');
   })

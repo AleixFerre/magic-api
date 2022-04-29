@@ -4,7 +4,7 @@ const ENDPOINT = '/api';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   res.send('Welcome to my personal API! Please be kind.');
 });
 
